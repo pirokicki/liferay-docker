@@ -1,4 +1,4 @@
-FROM prokicki/base:latest
+FROM prokicki/liferay:liferay-base
 
 ARG LABEL_BUILD_DATE
 ARG LABEL_LIFERAY_VCS_REF
@@ -47,7 +47,7 @@ LABEL org.label-schema.schema-version="1.0"
 LABEL org.label-schema.tomcat.version="${LABEL_TOMCAT_VERSION}"
 LABEL org.label-schema.vcs-ref="${LABEL_VCS_REF}"
 LABEL org.label-schema.vcs-url="${LABEL_VCS_URL}"
-LABEL org.label-schema.vendor="Liferay, Inc."
+LABEL org.label-schema.vendor="Piotr Rokicki"
 LABEL org.label-schema.version="${LABEL_VERSION}"
 
 USER liferay:liferay
