@@ -1,4 +1,4 @@
-FROM liferay/base:latest
+FROM prokicki/base:latest
 
 ARG LABEL_BUILD_DATE
 ARG LABEL_LIFERAY_VCS_REF
