@@ -3,11 +3,11 @@
 source ./_common.sh
 
 function build_docker_image {
-	local image_version=$(./release_notes.sh get-version)
+	local image_version="liferay-trial-base"
 
 	DOCKER_IMAGE_TAGS=()
-	DOCKER_IMAGE_TAGS+=("liferay/base:${image_version}-${TIMESTAMP}")
-	DOCKER_IMAGE_TAGS+=("liferay/base")
+	DOCKER_IMAGE_TAGS+=("prokicki/trial:${image_version}-${TIMESTAMP}")
+	DOCKER_IMAGE_TAGS+=("prokicki/base")
 
 	docker build \
 		--build-arg LABEL_BUILD_DATE=$(date "${CURRENT_DATE}" "+%Y-%m-%dT%H:%M:%SZ") \
@@ -23,8 +23,6 @@ function main {
 	make_temp_directory templates/base
 
 	build_docker_image
-
-	push_docker_images "${1}"
 
 	clean_up_temp_directory
 }

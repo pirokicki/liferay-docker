@@ -21,8 +21,6 @@ function main {
 
 	execute_scripts /usr/local/liferay/scripts/pre-configure
 
-	. set_java_version.sh
-
 	. configure_liferay.sh
 
 	execute_scripts /usr/local/liferay/scripts/pre-startup

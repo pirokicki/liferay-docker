@@ -3,13 +3,10 @@
 source ./_common.sh
 
 function build_docker_image {
-	local docker_image_name=${2}
-	local release_version=${3}
-
 	DOCKER_IMAGE_TAGS=()
 
-	DOCKER_IMAGE_TAGS+=("${docker_image_name}:${release_version}-${TIMESTAMP}")
-	DOCKER_IMAGE_TAGS+=("${docker_image_name}:${release_version}")
+	DOCKER_IMAGE_TAGS+=("prokicki/base:liferay74-dpx-trial-${TIMESTAMP}")
+	DOCKER_IMAGE_TAGS+=("prokicki/base:liferay74-dpx-trial")
 
 	docker build \
 		--build-arg LABEL_BUILD_DATE=$(date "${CURRENT_DATE}" "+%Y-%m-%dT%H:%M:%SZ") \
@@ -44,10 +41,6 @@ function main {
 	prepare_tomcat
 
 	build_docker_image "${@}"
-
-	test_docker_image
-
-	push_docker_images "${4}"
 
 	clean_up_temp_directory
 }
